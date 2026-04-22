@@ -2,16 +2,14 @@ resources:
   jobs:
     FMCG_Incremental_Update:
       name: FMCG Incremental Update
-
       tasks:
-
         - task_key: dim_processing_customers
           notebook_task:
             notebook_path: /Workspace/consolidated_pipeline/02_dimension_data_processing/01_customers_sb
             base_parameters:
               catalog: fmcg
               data_source: customers
-
+            source: WORKSPACE
         - task_key: dim_processing_products
           depends_on:
             - task_key: dim_processing_customers
@@ -20,32 +18,32 @@ resources:
             base_parameters:
               catalog: fmcg
               data_source: products
-
+            source: WORKSPACE
         - task_key: dim_processing_gross_price
           depends_on:
+            - task_key: dim_processing_customers
             - task_key: dim_processing_products
           notebook_task:
             notebook_path: /Workspace/consolidated_pipeline/02_dimension_data_processing/03_pricing_sb
             base_parameters:
               catalog: fmcg
               data_source: gross_price
-
+            source: WORKSPACE
         - task_key: dim_processing_date_table
-          depends_on:
-            - task_key: dim_processing_customers
           notebook_task:
             notebook_path: /Workspace/consolidated_pipeline/01_setup/02_date_table_creation
-            base_parameters:
-              catalog: fmcg
-
+            source: WORKSPACE
         - task_key: fact_processing_orders
           depends_on:
             - task_key: dim_processing_customers
             - task_key: dim_processing_products
             - task_key: dim_processing_gross_price
-            - task_key: dim_processing_date_table
           notebook_task:
             notebook_path: /Workspace/consolidated_pipeline/03_fact_data_processing/02_incremental_load_fact
             base_parameters:
               catalog: fmcg
               data_source: orders
+            source: WORKSPACE
+      queue:
+        enabled: true
+      performance_target: PERFORMANCE_OPTIMIZED
