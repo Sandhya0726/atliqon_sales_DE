@@ -1,4 +1,4 @@
-# 📊 AtliQon Sales Data Engineering Project
+# AtliQon Sales Data Engineering Project
 ### End-to-End Databricks Pipeline | Medallion Architecture | Incremental Processing | Dashboarding
 
 ## Project Overview
@@ -63,6 +63,16 @@ consolidated_pipeline/
 - Medallion Architecture
 - Databricks Dashboards
 - Genie AI (Databricks AI Assistant)
+
+---
+
+## Project Architecture
+
+<p align="center">
+<img src="consolidated_pipeline/assets/project_architecture.png" />
+</p>
+
+This architecture represents a Medallion-based pipeline using Bronze, Silver, and Gold layers for scalable data processing in Databricks.
 
 ---
 
@@ -135,6 +145,17 @@ Built inside **Databricks SQL Dashboard**
 - dashboard_image_02.png
 - AtliQon Sales Insights dashboard
 
+## Dashboard Preview:
+
+The final dashboard was built using Databricks SQL for business insights.
+
+<p align="center">
+  <img src="consolidated_pipeline/dashboard/dashboard_image_01.png" width="900"/>
+</p>
+<p align="center">
+  <img src="consolidated_pipeline/dashboard/dashboard_image_02.png" width="900"/>
+</p>
+
 ---
 
 ## AI Integration (Genie in Databricks)
@@ -164,6 +185,10 @@ Built inside **Databricks SQL Dashboard**
 - Pipeline automated using Databricks **Jobs (YAML configuration)**
 - Handles task dependencies and execution order
 - Ensures reliable end-to-end data flow
+
+<p align="center">
+  <img src="consolidated_pipeline/assets/image.png" width="900"/>
+</p>
 
 ---
 
